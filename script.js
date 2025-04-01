@@ -35,7 +35,16 @@ canvas.addEventListener("mousemove", function (event) {
 
   }
 });
+canvas.addEventListener("pointermove", function (event) {
+  mouse.x = event.x;
+  mouse.y = event.y;
+  if(particles.length < 500){
+    for (let i = 0; i < 5; i++) {
+      particles.unshift(new Particle());
+    }
 
+  }
+});
 class Particle {
   constructor() {
     this.x = mouse.x;

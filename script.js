@@ -35,16 +35,20 @@ canvas.addEventListener("mousemove", function (event) {
 
   }
 });
-canvas.addEventListener("pointermove", function (event) {
-  mouse.x = event.x;
-  mouse.y = event.y;
-  if(particles.length < 500){
-    for (let i = 0; i < 5; i++) {
-      particles.unshift(new Particle());
-    }
+// Обработчик события касания (для мобильных устройств)
+canvas.addEventListener("touchmove", function (event) {
+ 
+  event.preventDefault();
+  mouse.x = event.touches[0].clientX; 
+  mouse.y = event.touches[0].clientY; 
 
+  if (particles.length < 500) {
+      for (let i = 0; i < 5; i++) {
+          particles.unshift(new Particle());
+      }
   }
 });
+
 class Particle {
   constructor() {
     this.x = mouse.x;
